@@ -20,10 +20,13 @@ export class Income {
   title: string;
 
   @Column()
+  description: string;
+
+  @Column()
   total: number;
 
   @Column()
-  month_year: string;
+  monthYear: string;
 
   @ManyToOne(() => User, (user) => user.incomes)
   user: User;

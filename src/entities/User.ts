@@ -26,10 +26,10 @@ export class User {
   nickname: string;
 
   @Column()
-  password: string;
+  email: string;
 
   @Column()
-  email: string;
+  password: string;
 
   @Column()
   photo: string;

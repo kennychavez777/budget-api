@@ -5,6 +5,8 @@ import {
   OneToOne,
   JoinColumn,
   OneToMany,
+  CreateDateColumn,
+  UpdateDateColumn,
 } from "typeorm";
 import { User } from "./User";
 import { Expense } from "./Expense";
@@ -24,7 +26,7 @@ export class Budget {
   isMain: boolean;
 
   @Column()
-  month_year: string;
+  monthYear: string;
 
   @Column()
   limit: number;
@@ -35,4 +37,10 @@ export class Budget {
 
   @OneToMany(() => Expense, (expense) => expense.budget)
   expenses: Expense[];
+
+  @CreateDateColumn()
+  createdAt: Date;
+
+  @UpdateDateColumn()
+  updatedAt: Date;
 }

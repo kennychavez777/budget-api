@@ -1,8 +1,7 @@
-import { controller, httpGet, httpPost, httpPut } from "inversify-express-utils";
+import { controller, httpDelete, httpGet, httpPost, httpPut } from "inversify-express-utils";
 import { ICategoryService } from "../interfaces/ICategoryService";
 import { inject } from "inversify";
 import { TYPES } from "../types";
-import { CategoryDTO } from "../dtos/CategoryDTO";
 import { Category } from '../entities/Category';
 import { Request, Response } from "express";
 
@@ -43,5 +42,27 @@ export class CategoryController {
         res.status(400).send('Unknown error ocurred.')
       }
     }
+  }
+
+  @httpDelete('/:id')
+  public async deleteCategory(req: Request, res: Response) {
+    if(!req.params.id) throw new Error('Error: El id de la categoria no ha sido encontrado.');
+
+    const id = parseInt(req.params.id);
+
+    try {
+      await this._categoryService.deleteCategory(id);
+    } catch (error) {
+      if (error instanceof Error) {
+        res.status(404).send(error.message);
+      } else {
+        res.status(404).send('Unknown error ocurred.')
+      }
+    }
+
+    res.status(200).send({
+      status: 'success',
+      msg: 'Categoria eliminada correctamente.'
+    })
   }
 }

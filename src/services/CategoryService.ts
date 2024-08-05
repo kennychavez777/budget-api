@@ -44,4 +44,12 @@ export class CategoryService implements ICategoryService{
 
     return await this._categoryRepository.save(category);
   }
+
+  public async deleteCategory(id: number) {
+    if (!id) {
+      throw new Error('No se encontro ningun id para la categoria.');
+    }
+
+    await this._categoryRepository.delete(id);
+  }
 }

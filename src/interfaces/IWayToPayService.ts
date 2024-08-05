@@ -1,3 +1,3 @@
 export interface IWayToPayService {
-    getAllWayToPay(): any;
+  getAllWayToPay(): any;
 }

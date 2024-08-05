@@ -6,13 +6,13 @@ import { WayToPay } from "../entities/WayToPay";
 
 @injectable()
 export class WayToPayService implements IWayToPayService {
-  private wtpRepository: WayToPayRepository;
+  private _wtpRepository: WayToPayRepository;
 
   constructor(@inject(TYPES.WayToPayRepository) wtpRepository: WayToPayRepository) {
-    this.wtpRepository = wtpRepository;
+    this._wtpRepository = wtpRepository;
   }
 
   public async getAllWayToPay(): Promise<WayToPay[]> {
-    return await this.wtpRepository.find();
+    return await this._wtpRepository.find();
   }
 }

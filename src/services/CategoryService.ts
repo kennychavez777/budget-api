@@ -27,4 +27,21 @@ export class CategoryService implements ICategoryService{
 
     return await this._categoryRepository.save(category);
   }
+
+  public async updateCategory({ id, name, description }: CategoryDTO) {
+    if (!id) {
+      throw new Error('Falta el id de la categoria.');
+    }
+    const category = await this._categoryRepository.findOneBy({ id: id });
+
+    if (!category) {
+      console.log('No se encontro la categoria');
+      throw new Error('La categoria no fue encontrada');
+    }
+
+    category.name = name;
+    category.description = description ? description : '';
+
+    return await this._categoryRepository.save(category);
+  }
 }

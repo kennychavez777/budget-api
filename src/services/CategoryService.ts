@@ -23,7 +23,6 @@ export class CategoryService implements ICategoryService{
     const category = new Category();
     category.name = name;
     category.description = description ? description : '';
-    console.log(name, description);
 
     return await this._categoryRepository.save(category);
   }

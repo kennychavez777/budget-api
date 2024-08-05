@@ -22,7 +22,9 @@ export class User {
   @Column()
   lastname: string;
 
-  @Column()
+  @Column({
+    nullable: true
+  })
   nickname: string;
 
   @Column()
@@ -31,16 +33,24 @@ export class User {
   @Column()
   password: string;
 
-  @Column()
+  @Column({
+    nullable: true
+  })
   photo: string;
 
-  @Column()
+  @Column({
+    nullable: true
+  })
   description: string;
 
-  @CreateDateColumn()
+  @CreateDateColumn({
+    nullable: true
+  })
   createdAt: Date;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({
+    nullable: true
+  })
   updatedAt: Date;
 
   //

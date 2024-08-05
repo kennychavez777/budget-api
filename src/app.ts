@@ -6,7 +6,8 @@ import { errorHandler } from "./utils/errorHandler";
 import { InversifyExpressServer } from "inversify-express-utils";
 import { container } from "./inversify.config";
 import './controllers/WayToPayController';
-import './controllers/CategoryController'
+import './controllers/CategoryController';
+import './controllers/UserController';
 
 // const app = express();
 // app.use(cors());

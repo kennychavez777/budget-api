@@ -8,6 +8,7 @@ import { container } from "./inversify.config";
 import './controllers/WayToPayController';
 import './controllers/CategoryController';
 import './controllers/UserController';
+import './controllers/IncomeController';
 
 // const app = express();
 // app.use(cors());

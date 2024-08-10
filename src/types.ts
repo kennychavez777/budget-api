@@ -5,6 +5,8 @@ const TYPES = {
   CategoryRepository: Symbol.for("CategoryRepository"),
   IUserService: Symbol.for("IUserService"),
   UserRepository: Symbol.for("UserRepository"),
+  IIncomeService: Symbol.for("IIncomeService"),
+  IncomeRepository: Symbol.for("IncomeRepository"),
 };
 
 export { TYPES };

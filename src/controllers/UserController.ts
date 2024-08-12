@@ -66,7 +66,7 @@ export class UserController {
 
   @httpDelete('/:id')
   public async deleteUser(req: Request, res: Response) {
-    if(!req.params.id) throw new Error('Error: El id de la categoria no ha sido encontrado.');
+    if(!req.params.id) throw new Error('Error: El id del usuario no ha sido encontrado.');
 
     const id = parseInt(req.params.id);
 

@@ -1,4 +1,4 @@
-import { controller, httpGet, httpPost } from "inversify-express-utils";
+import { controller, httpDelete, httpGet, httpPost, httpPut } from "inversify-express-utils";
 import { IIncomeService } from "../interfaces/IIncomeService";
 import { inject } from "inversify";
 import { TYPES } from "../types";
@@ -46,5 +46,44 @@ export class IncomeController {
     const income: IncomeCreateDTO = req.body;
 
     return this._incomeService.createIncome(income);
+  }
+
+  @httpPut('/:id')
+  public async updateIncome(req: Request, res: Response) {
+    const { id } = req.params;
+    let data = { id, ...req.body };
+
+    try {
+      const income = await this._incomeService.updateIncome(data);
+      res.json(income);
+    } catch (error) {
+      if (error instanceof Error) {
+        res.status(400).send(error.message);
+      } else {
+        res.status(400).send('Unknown error ocurred.')
+      }
+    }
+  }
+
+  @httpDelete('/:id')
+  public async deleteUser(req: Request, res: Response) {
+    if(!req.params.id) throw new Error('Error: El id del ingreso no ha sido encontrado.');
+
+    const id = parseInt(req.params.id);
+
+    try {
+      await this._incomeService.deleteIncome(id);
+    } catch (error) {
+      if (error instanceof Error) {
+        res.status(404).send(error.message);
+      } else {
+        res.status(404).send('Unknown error ocurred.');
+      }
+    }
+
+    res.status(200).send({
+      status: 'success',
+      msg: 'Ingreso eliminado correctamente.'
+    });
   }
 }

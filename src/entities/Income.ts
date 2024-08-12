@@ -31,7 +31,7 @@ export class Income {
   @ManyToOne(() => User, (user) => user.incomes)
   user: User;
 
-  @OneToOne(() => WayToPay)
+  @ManyToOne(() => WayToPay, (wtp) => wtp.incomes)
   @JoinColumn()
   wayToPay: WayToPay;
 

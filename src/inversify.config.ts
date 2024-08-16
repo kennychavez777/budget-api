@@ -15,12 +15,16 @@ import { UserService } from './services/UserService';
 import { Income } from './entities/Income';
 import { IIncomeService } from './interfaces/IIncomeService';
 import { IncomeService } from './services/IncomeService';
+import { Budget } from './entities/Budget';
+import { IBudgetService } from './interfaces/IBudgetService';
+import { BudgetService } from './services/BudgetService';
 
 const container = new Container();
 const _wayToPayRepository = AppDataSource.getRepository(WayToPay);
 const _categoryRepository = AppDataSource.getRepository(Category);
 const _userRepository = AppDataSource.getRepository(User);
 const _incomeRepository = AppDataSource.getRepository(Income);
+const _budgetRepository = AppDataSource.getRepository(Budget);
 
 container.bind<Repository<WayToPay>>(TYPES.WayToPayRepository).toConstantValue(_wayToPayRepository);
 container.bind<IWayToPayService>(TYPES.IWayToPayService).to(WayToPayService);
@@ -33,5 +37,8 @@ container.bind<IUserService>(TYPES.IUserService).to(UserService);
 
 container.bind<Repository<Income>>(TYPES.IncomeRepository).toConstantValue(_incomeRepository);
 container.bind<IIncomeService>(TYPES.IIncomeService).to(IncomeService);
+
+container.bind<Repository<Budget>>(TYPES.BudgetRepository).toConstantValue(_budgetRepository);
+container.bind<IBudgetService>(TYPES.IBudgetService).to(BudgetService);
 
 export { container };

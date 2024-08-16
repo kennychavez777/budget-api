@@ -7,6 +7,8 @@ const TYPES = {
   UserRepository: Symbol.for("UserRepository"),
   IIncomeService: Symbol.for("IIncomeService"),
   IncomeRepository: Symbol.for("IncomeRepository"),
+  IBudgetService: Symbol.for("IBudgetService"),
+  BudgetRepository: Symbol.for("BudgetRepository"),
 };
 
 export { TYPES };

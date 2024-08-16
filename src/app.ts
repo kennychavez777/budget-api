@@ -9,6 +9,7 @@ import './controllers/WayToPayController';
 import './controllers/CategoryController';
 import './controllers/UserController';
 import './controllers/IncomeController';
+import './controllers/BudgetController';
 
 // const app = express();
 // app.use(cors());

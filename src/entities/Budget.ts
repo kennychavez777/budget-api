@@ -2,11 +2,11 @@ import {
   Entity,
   Column,
   PrimaryGeneratedColumn,
-  OneToOne,
-  JoinColumn,
   OneToMany,
   CreateDateColumn,
   UpdateDateColumn,
+  ManyToMany,
+  JoinTable,
 } from "typeorm";
 import { User } from "./User";
 import { Expense } from "./Expense";
@@ -31,12 +31,12 @@ export class Budget {
   @Column()
   limit: number;
 
-  @OneToOne(() => User)
-  @JoinColumn()
-  user: User;
-
   @OneToMany(() => Expense, (expense) => expense.budget)
   expenses: Expense[];
+
+  @ManyToMany(() => User)
+  @JoinTable()
+  users: User[];
 
   @CreateDateColumn()
   createdAt: Date;

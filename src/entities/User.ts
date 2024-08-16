@@ -56,8 +56,4 @@ export class User {
   //
   @OneToMany(() => Income, (income) => income.user)
   incomes: Income[];
-
-  @ManyToMany(() => Budget)
-  @JoinTable()
-  budgets: Budget;
 }

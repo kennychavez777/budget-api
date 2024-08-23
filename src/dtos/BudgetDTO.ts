@@ -8,7 +8,7 @@ export class BudgetDTO {
   public isMain: boolean;
   public monthYear: string;
   public limit: number;
-  public user: UserDTO;
+  public ownerId: UserDTO;
   public expenses: ExpenseDTO[];
   public createdAt: Date;
   public updatedAt: Date;

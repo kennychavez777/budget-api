@@ -7,6 +7,7 @@ import {
   UpdateDateColumn,
   ManyToMany,
   JoinTable,
+  ManyToOne,
 } from "typeorm";
 import { User } from "./User";
 import { Expense } from "./Expense";
@@ -30,6 +31,9 @@ export class Budget {
 
   @Column()
   limit: number;
+  
+  @ManyToOne(() => User, (user) => user.budgets)
+  owner: User;
 
   @OneToMany(() => Expense, (expense) => expense.budget)
   expenses: Expense[];

@@ -68,9 +68,11 @@ export class IncomeService implements IIncomeService {
     const income = await this._incomeRepository.findOne({
       where: { id: data.id },
     });
+
     const user = await this._userRepository.findOne({
       where: { id: parseInt(data.userId) },
     });
+    
     const wtp = await this._wtpRepository.findOne({
       where: { id: parseInt(data.wayToPayId) },
     });

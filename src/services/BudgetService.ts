@@ -99,6 +99,8 @@ export class BudgetService implements IBudgetService {
   }
 
   public async deleteBudget(id: number) {
-    throw new Error("Method not implemented.");
+    if (!id) throw new Error("No se encontró el ID del presupuesto.");
+
+    return await this._budgetRepository.delete(id);
   }
 }

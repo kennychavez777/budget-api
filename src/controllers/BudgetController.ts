@@ -1,4 +1,4 @@
-import { controller, httpGet, httpPost, httpPut } from "inversify-express-utils";
+import { controller, httpDelete, httpGet, httpPost, httpPut } from "inversify-express-utils";
 import { IBudgetService } from "../interfaces/IBudgetService";
 import { inject } from "inversify";
 import { TYPES } from "../types";
@@ -65,5 +65,27 @@ export class BudgetController {
         res.status(404).send('Unknown error ocurred.');
       }
     }
+  }
+
+  @httpDelete('/:id')
+  public async deleteBudget(req: Request, res: Response) {
+    if(!req.params.id) throw new Error('Error: El id del ingreso no ha sido encontrado.');
+
+    const id = parseInt(req.params.id);
+
+    try {
+      await this._budgetService.deleteBudget(id);
+    } catch (error) {
+      if (error instanceof Error) {
+        res.status(404).send(error.message);
+      } else {
+        res.status(404).send('Unknown error ocurred.');
+      }
+    }
+
+    res.status(200).send({
+      status: 'success',
+      msg: 'Presupuesto eliminado correctamente.'
+    });
   }
 }

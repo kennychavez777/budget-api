@@ -26,11 +26,11 @@ export class Expense {
   @Column()
   photo: string;
 
-  @OneToOne(() => Category)
+  @ManyToOne(() => Category, (category) => category.expenses)
   @JoinColumn()
   category: Category;
 
-  @OneToOne(() => WayToPay)
+  @ManyToOne(() => WayToPay, (wtp) => wtp.expenses)
   @JoinColumn()
   wayToPay: WayToPay;
 

@@ -6,14 +6,15 @@ import { Expense } from "./entities/Expense";
 import { Income } from "./entities/Income";
 import { User } from "./entities/User";
 import { WayToPay } from "./entities/WayToPay";
+import { db_credentials } from "./utils/keys.secret";
 
 export const AppDataSource = new DataSource({
   type: "postgres",
-  host: "localhost",
-  port: 5433,
-  username: "adm",
-  password: "123",
-  database: "budgetdb",
+  host: db_credentials.host,
+  port: db_credentials.port,
+  username: db_credentials.username,
+  password: db_credentials.pass,
+  database: db_credentials.dbname,
   synchronize: true,
   logging: true,
   entities: [Budget, Category, Expense, Income, User, WayToPay],

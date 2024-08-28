@@ -9,6 +9,8 @@ const TYPES = {
   IncomeRepository: Symbol.for("IncomeRepository"),
   IBudgetService: Symbol.for("IBudgetService"),
   BudgetRepository: Symbol.for("BudgetRepository"),
+  IExpenseService: Symbol.for("IExpenseService"),
+  ExpenseRepository: Symbol.for("ExpenseRepository"),
 };
 
 export { TYPES };

@@ -4,5 +4,5 @@ export const db_credentials = {
     dbname: 'budgetdb',
     username: 'adm',
     pass: '123',
-    port: 5433
+    port: 5433,
 }

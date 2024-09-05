@@ -65,4 +65,5 @@ package-lock.json
 *v8.log
 /lib/
 .env
-src/utils/keys.secret.ts
+/src/utils/keys.secret.ts
+**/src/utils/keys.secret.ts
